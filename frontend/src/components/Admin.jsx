@@ -18,8 +18,8 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const packageResponse = await axios.get("http://localhost:5000/api/packages");
-        const bookingResponse = await axios.get("http://localhost:5000/api/bookings");
+        const packageResponse = await axios.get("https://travel-agency-six-ashy.vercel.app/api/packages");
+        const bookingResponse = await axios.get("https://travel-agency-six-ashy.vercel.app/api/bookings");
         setPackages(packageResponse.data.data);
         setBookings(bookingResponse.data.data);
       } catch (error) {
@@ -71,7 +71,7 @@ const Admin = () => {
         imageData.append("file", imageFile);
         imageData.append("upload_preset", "booking");
   
-        const imageResponse = await axios.post("http://localhost:5000/api/upload", imageData);
+        const imageResponse = await axios.post("https://travel-agency-six-ashy.vercel.app/api/upload", imageData);
         imageUrl = imageResponse.data.url; 
       }
   
@@ -80,7 +80,7 @@ const Admin = () => {
       if (formData._id) {
         // Update package
         const response = await axios.put(
-          `http://localhost:5000/admin/packages/${formData._id}`,
+          `https://travel-agency-six-ashy.vercel.app/admin/packages/${formData._id}`,
           payload
         );
         // Update the package in the local state
@@ -91,7 +91,7 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
 
       } else {
         // Create new package
-        const response = await axios.post("http://localhost:5000/admin/packages", payload);
+        const response = await axios.post("https://travel-agency-six-ashy.vercel.app/admin/packages", payload);
         setPackages((prev) => [...prev, response.data.data]);
       }
   
@@ -118,7 +118,7 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
   const handleDelete = async (id) => {
     try {
       // Make the delete request
-      await axios.delete(`http://localhost:5000/admin/packages/${id}`);
+      await axios.delete(`https://travel-agency-six-ashy.vercel.app/admin/packages/${id}`);
       
       // Update the state to reflect the deleted package
       setPackages((prev) => prev.filter((pkg) => pkg._id !== id)); // Use _id instead of id if necessary

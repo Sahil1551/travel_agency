@@ -28,6 +28,7 @@ function App() {
       <Route path="/admin" element={<Adminlogin />} />
       <Route path="/packages/:id" element={<Package />} />
       <Route path='/invoice/:id' element={<Invoice />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   </div>
   <Footer />

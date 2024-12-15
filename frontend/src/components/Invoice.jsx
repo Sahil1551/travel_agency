@@ -39,11 +39,11 @@ const Invoice = () => {
     const fetchBooking = async () => {
       try {
         // Fetch booking details
-        const bookingResponse = await axios.get(`http://localhost:5000/api/bookings/${id}`);
+        const bookingResponse = await axios.get(`https://travel-agency-six-ashy.vercel.app/api/bookings/${id}`);
         setBooking(bookingResponse.data);
         
         // Fetch package details using the package ID
-        const packageResponse = await axios.get(`http://localhost:5000/api/packages/${bookingResponse.data.data.package}`);
+        const packageResponse = await axios.get(`https://travel-agency-six-ashy.vercel.app/api/packages/${bookingResponse.data.data.package}`);
         setPackageDetails(packageResponse.data);
       } catch (error) {
         console.error("Error fetching booking or package details:", error);
