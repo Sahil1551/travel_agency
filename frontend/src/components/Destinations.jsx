@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 const Destinations = () => {
+  const navigate = useNavigate();
   const handleClick=(_id)=>
   {
-    window.location.href=`/packages/${_id}`
+    navigate(`/packages/${_id}`)
   }
   const [destinations,setdestinations]=useState([]);
   useEffect(() => {
