@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const Destinations = () => {
+  const navigate = useNavigate();
   const [destinations, setDestinations] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const destinationsPerPage = 9;
-  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

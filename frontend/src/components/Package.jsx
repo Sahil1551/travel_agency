@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 const Package = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
-  navigate=useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
   // Form data states
   const [formData, setFormData] = useState({
