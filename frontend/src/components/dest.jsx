@@ -11,7 +11,7 @@ const Destinations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/packages');
+        const response = await axios.get('https://travel-agency-six-ashy.vercel.app/api/packages');
         console.log(response.data.data); // Debugging data
         setDestinations(response.data.data || []);
       } catch (err) {

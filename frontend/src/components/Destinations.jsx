@@ -9,7 +9,7 @@ const Destinations = () => {
   useEffect(() => {
     const fetchdata=async()=>{
       await axios
-      .get('http://localhost:5000/api/packages') // Make sure this URL is correct according to your API setup
+      .get('https://travel-agency-six-ashy.vercel.app/api/packages') // Make sure this URL is correct according to your API setup
       .then((response) => {
 
         setdestinations(response.data.data); // Set the fetched data into state

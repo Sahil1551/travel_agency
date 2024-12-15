@@ -42,7 +42,7 @@ const Package = () => {
     // Declare the postBooking function inside handleSubmit
     const postBooking = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/bookings', formData);
+        const response = await axios.post('https://travel-agency-six-ashy.vercel.app/api/bookings', formData);
         
         console.log('Booking successful:', response.data);
         window.location.href = `/invoice/${response.data.data._id}`;
@@ -75,7 +75,7 @@ const Package = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/packages/${id}`);
+        const response = await axios.get(`https://travel-agency-six-ashy.vercel.app/api/packages/${id}`);
         setPackageDetails(response.data.data);
       } catch (err) {
         console.log(err.message);
