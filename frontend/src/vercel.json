@@ -1,0 +1,29 @@
+{
+    "rewrites": [
+      {
+        "source": "/packages/:id",
+        "destination": "/"
+      },
+      {
+        "source": "/admin-logined",
+        "destination": "/"
+      },
+      {
+        "source": "/admin",
+        "destination": "/"
+      },
+      {
+        "source": "/Destinations",
+        "destination": "/"
+      },
+      {
+        "source": "/invoice/:id",
+        "destination": "/"
+      },
+      {
+        "source": "/:path*",
+        "destination": "/"
+      }
+    ]
+  }
+  

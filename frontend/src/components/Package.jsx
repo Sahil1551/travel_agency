@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const Package = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
-
+  navigate=useNavigate();
   const { id } = useParams();
   // Form data states
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ const Package = () => {
         const response = await axios.post('https://travel-agency-six-ashy.vercel.app/api/bookings', formData);
         
         console.log('Booking successful:', response.data);
-        window.location.href = `/invoice/${response.data.data._id}`;
+        navigate(`/invoice/${response.data.data._id}`);
         // Optionally handle success (e.g., show a success message, reset form, etc.)
       } catch (error) {
         console.error('There was an error:', error);
