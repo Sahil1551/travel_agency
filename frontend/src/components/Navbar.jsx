@@ -6,14 +6,14 @@ const Navbar = () => {
   return (
     <div className="bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 text-white">
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo */}
+        
         <div className="text-2xl font-bold tracking-wide">
           <Link to={'/'} className="hover:opacity-80 transition">
             Travel<span className="text-yellow-300">Go</span>
           </Link>
         </div>
 
-        {/* Links for Desktop */}
+        
         <ul className="hidden md:flex gap-6 font-medium">
           <li>
           <Link to={'/Destinations'} className="hover:text-blue-500 transition">
@@ -23,7 +23,7 @@ const Navbar = () => {
           
         </ul>
 
-        {/* Mobile Menu Toggle */}
+        
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Dropdown Menu */}
+      
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white text-black">
           <ul className="flex flex-col gap-4 text-center py-4">
