@@ -9,11 +9,10 @@ import Invoice from './components/Invoice';
 import Dest from './components/dest';
 import Admin from './components/Admin';
 
-// Exporting AuthContext
 export const AuthContext = createContext();
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Default is not logged in
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
@@ -38,12 +37,12 @@ function App() {
     </AuthContext.Provider>
   );
 }
-// Protected Route Component
+
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
-    // Redirect to the login page if not authenticated
+    
     return <Navigate to="/admin" />;
   }
 
