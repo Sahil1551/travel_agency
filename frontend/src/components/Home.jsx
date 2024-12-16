@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import sicily from "/sicily.jpg"; // Update image path
-import rome from "/rome.jpg"; // Update image path
-import paris from "/paris.jpg"; // Update image path
+import sicily from "/sicily.jpg"; 
+import rome from "/rome.jpg"; 
+import paris from "/paris.jpg"; 
 import 'animate.css';
 
 import Destinations from "./Destinations";
@@ -27,9 +27,9 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-    }, 4000); // Change image every 4 seconds
+    }, 4000); 
 
-    return () => clearInterval(interval); // Cleanup the interval when component unmounts
+    return () => clearInterval(interval);
   }, []);
 
   const nextSlide = () => {
@@ -44,8 +44,7 @@ const Home = () => {
 
   return (
     <>   <div className="relative w-full h-[94vh] overflow-hidden">
-    {/* Carousel Item */}
-    <div
+      <div
       className="absolute inset-0 transition-all duration-1000 ease-in-out"
       style={{
         backgroundImage: `url(${carouselItems[currentIndex].image})`,
@@ -53,7 +52,6 @@ const Home = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Gradient Overlay for Text Readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black bg-opacity-40 flex flex-col items-center justify-center text-center">
         <h2 className="text-white text-4xl sm:text-5xl font-bold mb-4 animate__animated animate__fadeIn animate__delay-1s">
           Discover Your Next Adventure
@@ -67,7 +65,6 @@ const Home = () => {
       </div>
     </div>
   
-    {/* Navigation Buttons - Hide on mobile */}
     <button
       onClick={prevSlide}
       className="absolute top-1/2 left-5 transform -translate-y-1/2 text-white bg-red-600 bg-opacity-80 p-5 rounded-full shadow-lg transition-all duration-300 hover:bg-red-700 hover:scale-110 md:block hidden"
