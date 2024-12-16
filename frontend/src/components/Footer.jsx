@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-800 text-white py-8 mt-auto">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Column 1 - About */}
+          
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-gray-400">
@@ -14,7 +14,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Column 2 - Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="text-gray-400">
@@ -23,7 +22,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3 - Social Media */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
@@ -42,7 +40,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 4 - Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Subscribe to Our Newsletter</h3>
             <form>
