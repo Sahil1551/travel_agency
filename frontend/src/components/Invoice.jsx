@@ -6,11 +6,9 @@ const Invoice = () => {
     const generatePDF = () => {
         const doc = new jsPDF();
     
-        // Add Title
         doc.setFontSize(20);
         doc.text('Invoice', 14, 20);
     
-        // Add Booking Details
         doc.setFontSize(14);
         doc.text(`Booking ID: ${booking.data._id}`, 14, 30);
         doc.text(`Date: ${new Date(booking.data.createdAt).toLocaleDateString()}`, 14, 40);
@@ -18,17 +16,14 @@ const Invoice = () => {
         doc.text(`Email: ${booking.data.email}`, 14, 60);
         doc.text(`Phone Number: ${booking.data.phoneNumber}`, 14, 70);
     
-        // Add Package Details
         doc.text(`Package: ${packageDetails.data.title}`, 14, 80);
         doc.text(`Price: $${packageDetails.data.price}`, 14, 90);
         doc.text(`Number of Travelers: ${booking.data.numberOfTravelers}`, 14, 100);
         doc.text(`Special Requests: ${booking.data.specialRequests || 'None'}`, 14, 110);
     
-        // Add Total Price
         const totalPrice = packageDetails.data.price * booking.data.numberOfTravelers;
         doc.text(`Total Price: $${totalPrice}`, 14, 120);
     
-        // Download PDF
         doc.save('invoice.pdf');
       };
   const { id } = useParams();
@@ -38,11 +33,8 @@ const Invoice = () => {
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        // Fetch booking details
         const bookingResponse = await axios.get(`https://travel-agency-six-ashy.vercel.app/api/bookings/${id}`);
         setBooking(bookingResponse.data);
-        
-        // Fetch package details using the package ID
         const packageResponse = await axios.get(`https://travel-agency-six-ashy.vercel.app/api/packages/${bookingResponse.data.data.package}`);
         setPackageDetails(packageResponse.data);
       } catch (error) {
@@ -54,7 +46,7 @@ const Invoice = () => {
   }, [id]);
 
   if (!booking || !packageDetails) {
-    return <div>Loading...</div>; // Show loading message while fetching data
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -90,7 +82,7 @@ const Invoice = () => {
         </div>
         <div>
         <button 
-            onClick={generatePDF} // Trigger PDF download on click
+            onClick={generatePDF} 
             className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition-all duration-200"
           >
             Download PDF
