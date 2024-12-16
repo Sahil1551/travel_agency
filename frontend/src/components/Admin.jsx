@@ -11,10 +11,10 @@ const Admin = () => {
     availableDates: [],
     image: "",
   });
-  const [newDate, setNewDate] = useState(""); // Temporary state for adding dates
-  const [imageFile, setImageFile] = useState(null); // File input for image upload
+  const [newDate, setNewDate] = useState("");
+  const [imageFile, setImageFile] = useState(null); 
 
-  // Fetch packages and bookings on load
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,13 +29,11 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Add a new date to the availableDates array
   const addDate = () => {
     if (newDate && !formData.availableDates.includes(newDate)) {
       setFormData((prev) => ({
@@ -46,7 +44,6 @@ const Admin = () => {
     }
   };
 
-  // Remove a date from the availableDates array
   const removeDate = (dateToRemove) => {
     setFormData((prev) => ({
       ...prev,
@@ -54,18 +51,15 @@ const Admin = () => {
     }));
   };
 
-  // Handle image file change
   const handleImageChange = (e) => {
     setImageFile(e.target.files[0]);
   };
 
-  // Add or update a package
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let imageUrl = formData.image;
   
-      // Upload the image if a new file is selected
       if (imageFile) {
         const imageData = new FormData();
         imageData.append("file", imageFile);
@@ -78,24 +72,20 @@ const Admin = () => {
       const payload = { ...formData, image: imageUrl };
   
       if (formData._id) {
-        // Update package
+        
         const response = await axios.put(
           `https://travel-agency-six-ashy.vercel.app/admin/packages/${formData._id}`,
           payload
         );
-        // Update the package in the local state
-        // Update the package in the local state
 setPackages((prev) =>
 prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
 );
 
       } else {
-        // Create new package
         const response = await axios.post("https://travel-agency-six-ashy.vercel.app/admin/packages", payload);
         setPackages((prev) => [...prev, response.data.data]);
       }
   
-      // Reset form and file input
       setFormData({
         title: "",
         description: "",
@@ -103,31 +93,26 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
         availableDates: [],
         image: "",
       });
-      setImageFile(null); // Clear image file input
+      setImageFile(null); 
     } catch (error) {
       console.error("Error saving package:", error);
     }
   };
   
 
-  // Edit a package
   const handleEdit = (pkg) => {
     setFormData(pkg);
   };
-  // Delete a package
   const handleDelete = async (id) => {
     try {
-      // Make the delete request
       await axios.delete(`https://travel-agency-six-ashy.vercel.app/admin/packages/${id}`);
       
-      // Update the state to reflect the deleted package
-      setPackages((prev) => prev.filter((pkg) => pkg._id !== id)); // Use _id instead of id if necessary
+      setPackages((prev) => prev.filter((pkg) => pkg._id !== id)); 
     } catch (error) {
       console.error("Error deleting package:", error);
     }
   };
   
-  // Helper function to get the package name by ID
   const getPackageName = (packageId) => {
     const matchedPackage = packages.find((pkg) => pkg.id === packageId);
     return matchedPackage ? matchedPackage.title : "N/A";
@@ -137,7 +122,6 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
   
-      {/* Form for Adding/Updating Packages */}
       <form onSubmit={handleSubmit} className="mb-8 space-y-4">
         <h2 className="text-xl font-bold">Add/Update Package</h2>
         <input
@@ -167,7 +151,6 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
           required
         />
   
-        {/* Dates Input */}
         <div>
           <label className="block mb-2">Available Dates:</label>
           <div className="flex flex-wrap space-x-2 items-center mb-2">
@@ -200,8 +183,6 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
             ))}
           </ul>
         </div>
-  
-        {/* Image Upload */}
         <div>
           <label className="block mb-2">Image:</label>
           <input type="file" onChange={handleImageChange} className="block" />
@@ -216,7 +197,6 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
         </button>
       </form>
   
-      {/* Package List */}
       <div className="mb-8">
         <h2 className="text-xl font-bold mb-4">Tour Packages</h2>
         <div className="overflow-x-auto">
@@ -260,7 +240,6 @@ prev.map((pkg) => (pkg._id === formData._id ? response.data : pkg))
         </div>
       </div>
   
-      {/* Booking List */}
       <div>
         <h2 className="text-xl font-bold mb-4">Submitted Bookings</h2>
         <div className="overflow-x-auto">
