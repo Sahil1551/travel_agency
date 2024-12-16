@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 const Package = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const navigate = useNavigate();
   const { id } = useParams();
-  // Form data states
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,17 +16,14 @@ const Package = () => {
     package: id
   });
 
-  // Function to open the modal
   const openModal = () => {
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -35,34 +32,28 @@ const Package = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Declare the postBooking function inside handleSubmit
     const postBooking = async () => {
       try {
         const response = await axios.post('https://travel-agency-six-ashy.vercel.app/api/bookings', formData);
         
         console.log('Booking successful:', response.data);
         navigate(`/invoice/${response.data.data._id}`);
-        // Optionally handle success (e.g., show a success message, reset form, etc.)
       } catch (error) {
         console.error('There was an error:', error);
-        // Optionally handle error (e.g., show an error message)
       }
     };
   
-    // Call the postBooking function
     postBooking();
   };
 
-  // Disable scrolling when the modal is open
   useEffect(() => {
     if (isModalOpen) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling
+      document.body.style.overflow = 'hidden'; 
     } else {
-      document.body.style.overflow = 'auto'; // Enable scrolling
+      document.body.style.overflow = 'auto'; 
     }
 
     return () => {
@@ -85,7 +76,7 @@ const Package = () => {
   }, [id]);
 
   if (!packageDetails) {
-    return <div>Loading...</div>; // Show loading while fetching
+    return <div>Loading...</div>; 
   }
 
   return (
