@@ -13,7 +13,7 @@ const Destinations = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://travel-agency-six-ashy.vercel.app/api/packages');
-        console.log(response.data.data); // Debugging data
+        console.log(response.data.data); 
         setDestinations(response.data.data || []);
       } catch (err) {
         console.error(err.message);
