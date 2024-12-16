@@ -1,4 +1,4 @@
-// Adminlogin.jsx
+
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
@@ -13,12 +13,11 @@ const pass='password@123'
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simulated authentication logic (replace with real backend API call)
     if (username === admin && password === pass) {
-      setIsAuthenticated(true); // Update authentication state
-      navigate('/admin-logined'); // Redirect to admin page
+      setIsAuthenticated(true); 
+      navigate('/admin-logined'); 
     } else {
-      alert('Invalid username or password'); // Error handling
+      alert('Invalid username or password'); 
     }
   };
 
@@ -51,4 +50,4 @@ const pass='password@123'
   );
 }
 
-export default Adminlogin; // Make sure this line is present
+export default Adminlogin; 
