@@ -11,10 +11,10 @@ const Destinations = () => {
   useEffect(() => {
     const fetchdata=async()=>{
       await axios
-      .get('https://travel-agency-six-ashy.vercel.app/api/packages') // Make sure this URL is correct according to your API setup
+      .get('https://travel-agency-six-ashy.vercel.app/api/packages') 
       .then((response) => {
 
-        setdestinations(response.data.data); // Set the fetched data into state
+        setdestinations(response.data.data); 
        
       })
       .catch((err) => {
@@ -28,7 +28,6 @@ const Destinations = () => {
         
       <h2 className="text-3xl font-bold text-center mb-8">Popular Destinations</h2>
 
-      {/* Grid Layout: 4 cards per row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
         {destinations.map((destination, index) => (
